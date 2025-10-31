@@ -2,17 +2,19 @@ import sys, os
 from PySide6 import QtCore, QtGui, QtWidgets, QtMultimedia, QtMultimediaWidgets
 import serial
 import serial.tools.list_ports
-TEST_MODE = True  # set to False when using ESP32
+TEST_MODE = False  # set to False when using ESP32
 
 # ------------------- USER SETTINGS -------------------
 PORT = "COM3"  # <-- put your ESP32 COM port here
 BAUD = 115200
 
-GENERIC_VIDEO = r"C:\Users\baong\Documents\pythoncode\testVids\generic.mp4"
+GENERIC_VIDEO = r"C:\Users\baong\Documents\HANDHELD\testVids\generic.mp4"
 VIDEO_MAP = {
-    "PLAY1": r"C:\Users\baong\Documents\pythoncode\testVids\vid1.mp4",
-    "PLAY2": r"C:\Users\baong\Documents\pythoncode\testVids\vid2.mp4",
-    "PLAY3": r"C:\Users\baong\Documents\pythoncode\testVids\vid3.mp4",
+    "PLAY1": r"C:\Users\baong\Documents\HANDHELD\testVids\vid1.mp4",
+    "PLAY2": r"C:\Users\baong\Documents\HANDHELD\testVids\vid2.mp4",
+    "PLAY3": r"C:\Users\baong\Documents\HANDHELD\testVids\vid3.mp4",
+    "PLAY4": r"C:\Users\baong\Documents\HANDHELD\testVids\vid4.mp4",
+
 }
 FADE_MS = 700          # fade duration (ms)
 TARGET_VOLUME = 80      # % volume when fully on
@@ -304,6 +306,8 @@ class App(QtWidgets.QApplication):
                 self.on_serial_line("PLAY2")
             elif key == QtCore.Qt.Key_3:
                 self.on_serial_line("PLAY3")
+            elif key == QtCore.Qt.Key_4:
+                self.on_serial_line("PLAY4")
             elif key == QtCore.Qt.Key_S:
                 self.on_serial_line("STOP")
         return super().eventFilter(obj, event)
